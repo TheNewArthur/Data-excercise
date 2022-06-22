@@ -5,7 +5,9 @@
     var table1 = document.getElementById('table1')
     var labelRow = table1.rows.item(1).cells
     var labelsTable1 = []
+    var labelsTable2 = []
     var allObjects1 = []
+    var allObjects2 = []
 
 //----- Functions -----//
 
@@ -35,25 +37,45 @@
         labelsTable1.push(labelRow.item(i).innerHTML)
     }
 
-//----- construct canvas ------//
+//----- construct canvases ------//
 
     var canvas = document.createElement('canvas')
-    canvas.id = 'myGraph'
+    var canvas2 = document.createElement('canvas')
+    canvas.id = 'myGraph1'
+    canvas2.id = 'myGraph2'
     document.getElementById('Crimes_et_d.C3.A9lits_enregistr.C3.A9s_par_les_services_de_police').after(canvas)
+    document.getElementById('Homicides').after(canvas2)
 
-//----- construct chart -----//
+//----- construct charts -----//
 
-    const data = {
+    const dataGraph1 = {
       labels: labelsTable1,
       datasets: allObjects1
     }
 
+    const dataGraph2 = {
+        labels: ['a','b'],
+        datasets: [{
+            label:'test',
+            data: [0,1],
+            borderColor: 'rgb(155,155,155)'    
+        }]
+    }
+
     const myChart = new Chart(
-      document.getElementById('myGraph'), {
+      document.getElementById('myGraph1'), {
         type: 'line',
-        data: data,
+        data: dataGraph1,
         options: {}
       }
     )
+
+    const myChart1 = new Chart(
+        document.getElementById('myGraph2'), {
+          type: 'line',
+          data: dataGraph2,
+          options: {}
+        }
+      )
 
 })();
