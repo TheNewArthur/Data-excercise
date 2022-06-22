@@ -5,7 +5,7 @@
     var table1 = document.getElementById('table1')
     var labelRow = table1.rows.item(1).cells
     var labelsTable1 = []
-    var allObjects = []
+    var allObjects1 = []
 
 //----- Functions -----//
 
@@ -22,7 +22,7 @@
             borderColor: `rgb(${Math.floor(Math.random() * 255)},${Math.floor(Math.random() * 255)},${Math.floor(Math.random() * 255)})`
         }
         
-        allObjects.push(tempObj)
+        allObjects1.push(tempObj)
     }
 
 //----- Call functions -----//
@@ -45,7 +45,7 @@
 
     const data = {
       labels: labelsTable1,
-      datasets: allObjects
+      datasets: allObjects1
     }
 
     const myChart = new Chart(
