@@ -49,7 +49,6 @@
         labelsTable2.push(labelRow2.item(i).innerHTML)
     }
 
-
 //----- Construct canvases ------//
 
     var canvas = document.createElement('canvas')
