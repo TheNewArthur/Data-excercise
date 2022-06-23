@@ -3,15 +3,19 @@
 //----- Variables -----//
 
     var table1 = document.getElementById('table1')
+    var table2 = document.getElementById('table2')
     var labelRow = table1.rows.item(1).cells
+    var labelRow2 = table2.rows.item(0).cells
     var labelsTable1 = []
     var labelsTable2 = []
     var allObjects1 = []
     var allObjects2 = []
 
+    console.log('variables do not give problems')
+
 //----- Functions -----//
 
-    function createDataObj (index) {
+    function createDataObj1 (index) {
         var temp = []
 
         for (var i = 2; i < table1.rows.item(index).cells.length; i++) {
@@ -27,15 +31,40 @@
         allObjects1.push(tempObj)
     }
 
+    function createDataObj2 (index) {
+        var temp = []
+
+        for (var i = 2; i < table2.rows.item(index).cells.length; i++) {
+            temp.push(parseFloat(table2.rows.item(index).cells.item(i).innerHTML.replace(/,/g, '.')))
+        }
+
+        let tempObj = {
+            label: table2.rows.item(index).cells.item(1).innerHTML,
+            data: temp,
+            borderColor: `rgb(${Math.floor(Math.random() * 255)},${Math.floor(Math.random() * 255)},${Math.floor(Math.random() * 255)})`
+        }
+
+        allObjects2.push(tempObj)
+    }
+
 //----- Call functions -----//
 
     for (var i = 2; i < table1.rows.length; i++) {
-        createDataObj(i)
+        createDataObj1(i)
+    }
+
+    for (var i = 2; i < table2.rows.length; i++) {
+        createDataObj2(i)
     }
 
     for (var i = 2; i < labelRow.length; i++) {
         labelsTable1.push(labelRow.item(i).innerHTML)
     }
+
+    for (var i = 2; i < labelRow2.length; i++) {
+        labelsTable2.push(labelRow2.item(i).innerHTML)
+    }
+
 
 //----- construct canvases ------//
 
@@ -54,12 +83,8 @@
     }
 
     const dataGraph2 = {
-        labels: ['a','b'],
-        datasets: [{
-            label:'test',
-            data: [0,1],
-            borderColor: 'rgb(155,155,155)'    
-        }]
+        labels: labelsTable2,
+        datasets: allObjects2
     }
 
     const myChart = new Chart(
