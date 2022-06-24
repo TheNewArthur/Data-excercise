@@ -68,5 +68,6 @@
 
     getTheData()
 
+//----- Extra comment in order to see the effects of .gitignore -----//
     
 })();
